@@ -49,14 +49,127 @@ cd library
 
 ## 프로젝트 구조
 ```
-src/main/java/com/group/libraryapp/
-├── config/         # 설정 클래스
-├── controller/     # API 엔드포인트
-├── domain/        # 도메인 모델
-├── dto/           # 데이터 전송 객체
-├── repository/    # 데이터 접근 계층
-└── service/       # 비즈니스 로직
+library/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── group/
+│   │   │           └── libraryapp/
+│   │   │               ├── config/         # 설정 클래스
+│   │   │               │   ├── JpaConfig.java
+│   │   │               │   └── SwaggerConfig.java
+│   │   │               ├── controller/     # API 엔드포인트
+│   │   │               │   ├── BookController.java
+│   │   │               │   ├── MemberController.java
+│   │   │               │   └── LoanController.java
+│   │   │               ├── domain/        # 도메인 모델
+│   │   │               │   ├── Book.java
+│   │   │               │   ├── Member.java
+│   │   │               │   └── Loan.java
+│   │   │               ├── dto/           # 데이터 전송 객체
+│   │   │               │   ├── BookDto.java
+│   │   │               │   ├── MemberDto.java
+│   │   │               │   └── LoanDto.java
+│   │   │               ├── repository/    # 데이터 접근 계층
+│   │   │               │   ├── BookRepository.java
+│   │   │               │   ├── MemberRepository.java
+│   │   │               │   └── LoanRepository.java
+│   │   │               ├── service/       # 비즈니스 로직
+│   │   │               │   ├── BookService.java
+│   │   │               │   ├── MemberService.java
+│   │   │               │   └── LoanService.java
+│   │   │               └── LibraryAppApplication.java
+│   │   └── resources/
+│   │       ├── application.yml
+│   │       └── static/
+│   └── test/
+│       └── java/
+│           └── com/
+│               └── group/
+│                   └── libraryapp/
+│                       ├── BookServiceTest.java
+│                       ├── MemberServiceTest.java
+│                       └── LoanServiceTest.java
+├── build.gradle
+├── settings.gradle
+├── gradlew
+├── gradlew.bat
+└── README.md
 ```
+
+### 디렉토리 설명
+
+#### 1. src/main/java/com/group/libraryapp/
+- **config/**: 애플리케이션 설정 클래스
+  - JPA 설정, Swagger 설정 등
+- **controller/**: REST API 엔드포인트
+  - HTTP 요청 처리
+  - API 엔드포인트 정의
+- **domain/**: 도메인 모델
+  - JPA 엔티티 클래스
+  - 비즈니스 규칙이 포함된 도메인 객체
+- **dto/**: 데이터 전송 객체
+  - API 요청/응답 데이터 구조
+  - 엔티티와 DTO 간 변환 로직
+- **repository/**: 데이터 접근 계층
+  - JPA Repository 인터페이스
+  - 데이터베이스 쿼리 정의
+- **service/**: 비즈니스 로직
+  - 트랜잭션 관리
+  - 도메인 로직 구현
+
+#### 2. src/main/resources/
+- **application.yml**: 애플리케이션 설정 파일
+  - 데이터베이스 연결 정보
+  - 서버 포트 설정
+  - 로깅 설정 등
+- **static/**: 정적 리소스 파일
+
+#### 3. src/test/
+- 단위 테스트 코드
+- 통합 테스트 코드
+- 테스트용 설정 파일
+
+#### 4. 루트 디렉토리
+- **build.gradle**: Gradle 빌드 설정
+  - 의존성 관리
+  - 빌드 설정
+- **settings.gradle**: Gradle 프로젝트 설정
+- **gradlew**: Gradle Wrapper 스크립트 (Unix)
+- **gradlew.bat**: Gradle Wrapper 스크립트 (Windows)
+
+### 계층 구조
+```
+Controller Layer (API)
+    ↓
+Service Layer (Business Logic)
+    ↓
+Repository Layer (Data Access)
+    ↓
+Database
+```
+
+각 계층의 역할:
+1. **Controller Layer**
+   - HTTP 요청 처리
+   - 입력값 검증
+   - DTO 변환
+
+2. **Service Layer**
+   - 비즈니스 로직 구현
+   - 트랜잭션 관리
+   - 여러 Repository 조합
+
+3. **Repository Layer**
+   - 데이터베이스 접근
+   - CRUD 작업 수행
+   - 쿼리 최적화
+
+4. **Domain Layer**
+   - 비즈니스 규칙
+   - 엔티티 관계
+   - 도메인 이벤트
 
 ## 개발 가이드
 1. 브랜치 전략
