@@ -85,6 +85,6 @@ src/main/java/com/group/libraryapp/
 이 프로젝트는 MIT 라이선스를 따릅니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
 
 ## 연락처
-프로젝트 관리자 - [이메일 주소]
+프로젝트 관리자 - [tcagt357@naver.com]
 
-프로젝트 링크: [GitHub Repository URL]
+프로젝트 링크: [https://github.com/IlsongKang/library-app.git]
